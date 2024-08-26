@@ -16,7 +16,7 @@ import random
 from django.http import JsonResponse
 from django.views.decorators.http import require_GET
 
-#@method_decorator(login_required,name='dispatch')
+@method_decorator(login_required,name='dispatch')
 class enter_words(View):
     def post(self,request):
         word = wordform(request.POST, request.FILES)
@@ -47,7 +47,7 @@ def delete_word(requset,pk):
 
 
 
-#@method_decorator(login_required,name='dispatch')
+@method_decorator(login_required,name='dispatch')
 class exam(View):
     def post(self,request):
         selected_translation = request.POST.get('translation')
