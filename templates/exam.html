@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %}
+اختبار الترجمة
+{% endblock title %}
+
+{% block content %}
+
+
+<div class="content">
+    <div class="form-container ">
+        <div class="sidebar">
+            <h4>كلمات لم تُعرف</h4>
+            {% for word in unwords|slice:":7" %}
+            <div class="word-item">
+                <span>{{word.word.english}}</span>
+                <a href="{% url 'delete-word' word.word.id %}" class="btn btn-primary ">حذف</a>
+            </div>
+            {% endfor %}
+                
+                
+        </div>
+        
+        {% if result %}
+        <h2 class="text-center">النتيجة </h2>
+        {% else %}
+        <h2 class="text-center">اختبار الترجمة</h2>
+        <p class="text-center">: اختر الترجمة الصحيحة للكلمة التالية</p>
+
+        {% endif %}
+            
+       
+       {% if result %}
+       <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="word_id" value="{{ main_word.id }}">
+        <h3 class="text-center mb-4">{{ main_word.arabic }}</h3>
+        <div class="mb-3">
+            {% for translation in translations %}
+             <div class="form-check">
+                {% if translation == selected_translation %}
+                <input disabled class="form-check-input " type="radio" name="translation" id="option{{ forloop.counter }}" value="{{ translation }}" checked>
+               {% else %}
+               <input disabled class="form-check-input " type="radio" name="translation" id="option{{ forloop.counter }}" value="{{ translation }}" >
+
+               {% endif %}
+                {% if translation == selected_translation and ok == 1 %}
+                <label  class="form-check-label " for="option{{ forloop.counter }}" >  {{ translation }}</label>
+                <div class="alert alert-success">
+                    <strong>الإجابة صحيحة</strong>    
+                  </div>
+                 {% elif translation == selected_translation and ok == 0 %}
+                 <label class="form-check-label " for="option{{ forloop.counter }}"> {{ translation }}</label>
+
+                <div class="alert alert-danger">
+                    <strong>الإجابة خاطئة</strong> 
+                 </div>
+                 {% else %}
+                 <label class="form-check-label" for="option{{ forloop.counter }}"> {{ translation }}</label>
+                 {% endif %}
+            </div> 
+            
+            {% endfor %}
+            
+            {% if ok == 0 %}
+            <div class="alert alert-warning">
+                <strong>Info!</strong> <br>{{result}}
+              </div>
+            {% endif %}
+                
+        </div>
+    </form>
+    <center>
+    <a class="btn btn-success w-100" href="{% url 'exam'%}">التالي </a>
+    </center>
+       {% else %}
+        
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="word_id" value="{{ main_word.id }}">
+            <input type="hidden" name="translations" value="{{ translations }}">
+            <h3 class="text-center mb-4">{{ main_word.arabic }}</h3>
+            <div class="mb-3">
+                {% for translation in translations %}
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="translation" id="option{{ forloop.counter }}" value="{{ translation }}">
+                    <label class="form-check-label" for="option{{ forloop.counter }}">{{ translation }}</label>
+                </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="btn btn-primary w-100">تحقق</button>
+        </form>
+    </div>
+</div>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'static/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="wrapper">
+       <div class="title-text">
+          <div class="title login">Login</div>
+       </div>
+       <div class="form-container">
+          <div class="form-inner">
+             <form method="post" class="login">
+               {% csrf_token %}
+               <div class="field">
+                  <label class="slide">User Name</label>
+                  {{form.username}}
+               </div>
+               <br>
+               <div class="field">
+                  <label class="slide">Password</label>
+                  {{form.password}}
+               </div>
+               <br>
+               <div class="signup-link">
+                  Don't Have Account? <a href="{% url 'signin'%}">Create A New</a>
+               </div>
+               <br>
+               <div class="field btn">
+                  <div class="btn-layer"></div>
+                  <center>
+                  <button type="submit" value="Login" class="btn btn-primary w-100">تسجيل الدخول</button>
+                  </center>
+               </div>
+             </form>
+          </div>
+       </div>
+    </div>
+  </body>
+</html>

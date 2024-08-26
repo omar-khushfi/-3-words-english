@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+إدخال كلمة وترجمتها
+{% endblock title %}
+
+{% block content %}
+<div class="sidebar">
+    <h4>كلمات لم تُعرف</h4>
+    {% for word in unwords|slice:":7"%}
+    <div class="word-item">
+        <span>{{word.word.english}}</span>
+        <a href="{% url 'delete-word' word.word.id %}" class="btn btn-primary ">حذف</a>
+    </div>
+    {% endfor %}
+        
+</div>
+
+<div class="content">
+    <div class="form-container">
+        <h2 class="text-center">إدخال كلمة وترجمتها</h2>
+        <form method="post">
+           {% csrf_token %}
+           {{form}}
+           <br>
+           <br>
+            <button type="submit" class="btn btn-primary w-100">إرسال</button>
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock content %}

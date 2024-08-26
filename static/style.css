@@ -1,0 +1,182 @@
+/* التنسيقات العامة */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff !important;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* شريط التنقل */
+.navbar {
+    background-color: #2c3e50; /* أزرق داكن */
+    border-bottom: 3px solid #1abc9c; /* أخضر نعناعي */
+    position: fixed /* تثبيت الـ Navbar */ !important;
+    top: 0; /* تثبيت في أعلى الصفحة */
+    width: 100%; /* جعله يعرض كامل العرض */
+    z-index: 1000; /* ضمان ظهور الـ Navbar فوق المحتوى الآخر */
+}
+
+.navbar-brand, .nav-link {
+    color: #ecf0f1 !important; /* أبيض فاتح */
+}
+
+.navbar-toggler {
+    border-color: #1abc9c;
+}
+
+.navbar-toggler-icon {
+    background-color: #1abc9c; /* أخضر نعناعي */
+}
+
+.nav-link:hover {
+    color: #1abc9c !important; /* أخضر نعناعي */
+}
+
+/* الشريط الجانبي */
+.sidebar {
+    position: fixed;
+    right: 0;
+    top: 56px;
+    width: 220px;
+    height: 100%;
+    background-color: #34495e; /* رمادي أزرق */
+    color: #ecf0f1;
+    padding: 15px;
+    overflow-y: auto;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h4 {
+    color: #1abc9c; /* أخضر نعناعي */
+    margin-bottom: 20px;
+}
+
+.sidebar .word-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #2c3e50;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sidebar .word-item button {
+    background-color: #e74c3c; /* أحمر */
+    border: none;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.sidebar .word-item button:hover {
+    background-color: #c0392b; /* أحمر داكن */
+}
+
+/* محتوى الصفحة */
+.content {
+    margin-right: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ecf0f1; /* رمادي فاتح */
+    padding: 80px 20px 20px 20px; /* إضافة padding أعلى لتعويض شريط التنقل المثبت */
+}
+.err{
+    color: red !important;
+}
+.form-container {
+    max-width: 500px;
+    width: 100% !important;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* أزرار */
+.btn-primary {
+    background-color: #1abc9c; /* أخضر نعناعي */
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #16a085; /* أخضر داكن */
+}
+
+/* صفحات تسجيل الدخول والتسجيل */
+.wrapper {
+    max-width: 400px;
+    width: 100%;
+    background-color: #ecf0f1; /* رمادي فاتح */
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.title-text {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50; /* أزرق داكن */
+}
+
+.field {
+    margin-bottom: 15px;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 5px;
+    color: #2c3e50; /* أزرق داكن */
+}
+
+.field input[type="text"],
+.field input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bdc3c7; /* رمادي */
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.signup-link a {
+    color: #1abc9c; /* أخضر نعناعي */
+}
+
+.signup-link a:hover {
+    color: #16a085; /* أخضر داكن */
+}
+
+.btn-layer {
+    background-color: #1abc9c; /* أخضر نعناعي */
+    height: 100%;
+    width: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    transition: width 0.3s ease;
+}
+
+.field.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.field.btn input {
+    z-index: 2;
+    position: relative;
+}
+
+.field.btn input:hover + .btn-layer {
+    width: 100%;
+}
