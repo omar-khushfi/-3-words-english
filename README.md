@@ -1,0 +1,1 @@
+The site helps to memorize English vocabulary, where the word is entered with its translation into Arabic, and the site asks random questions from the words that the user has memorized, shows options, and keeps the words that the user answered incorrectly, and shows them in a sidebar.
